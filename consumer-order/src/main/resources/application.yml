@@ -1,0 +1,16 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: ms-consumer-order
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+#Configure Ribbon load balancer strategy. Default RoundRobinRule
+ms-provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
