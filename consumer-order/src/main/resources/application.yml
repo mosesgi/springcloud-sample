@@ -14,3 +14,24 @@ eureka:
 ms-provider-user:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        requestVolumeThreshold: 5
+    execution:
+      isolation:
+        thread:
+          timeoutInMilliseconds: 4000
+
+feign:
+  hystrix:
+    enabled: true
+
+#For Hystrix stream
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

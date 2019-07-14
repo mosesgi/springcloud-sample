@@ -30,6 +30,17 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
       #defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/     #HA
       #defaultZone: http://user:password123@localhost:8761/eureka/        #Security
-
   instance:
     prefer-ip-address: true
+
+
+management:
+  server:
+    port: 8899  #Actuator管理端口调整成8899,独立的端口可以做安全控制
+  health:
+    mail:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"

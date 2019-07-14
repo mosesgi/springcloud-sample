@@ -1,0 +1,5 @@
+turbine:
+  appConfig: ms-consumer-order	#调用方服务名
+  clusterNameExpression: "'default'"
+  #http://localhost:8080/turbine.stream
+  #http://localhost:8080/hystrix
