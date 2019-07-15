@@ -1,0 +1,19 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: ms-gateway-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+management:
+  security:
+    enabled: false
+zuul:
+  routes:
+    route-name:
+      path: /path-a/**
+      url: forward:/path-b

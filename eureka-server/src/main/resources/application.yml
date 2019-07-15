@@ -7,5 +7,5 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-# 参考文档：http://projects.spring.io/spring-cloud/docs/1.0.3/spring-cloud.html#_standalone_mode
+# 参考文档：https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.1.2.RELEASE/single/spring-cloud-netflix.html#spring-cloud-eureka-server-standalone-mode
 # 参考文档：http://my.oschina.net/buwei/blog/618756

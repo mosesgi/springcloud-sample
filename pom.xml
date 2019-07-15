@@ -10,6 +10,7 @@
         <module>consumer-order</module>
         <module>model-api</module>
         <module>hystrix-dashboard</module>
+        <module>zuul-gateway</module>
     </modules>
     <groupId>com.moses.cloud</groupId>
     <artifactId>springcloud-sample</artifactId>
