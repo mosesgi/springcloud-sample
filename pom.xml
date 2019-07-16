@@ -12,6 +12,7 @@
         <module>hystrix-dashboard</module>
         <module>zuul-gateway</module>
         <module>config-server</module>
+        <module>boot-admin</module>
     </modules>
     <groupId>com.moses.cloud</groupId>
     <artifactId>springcloud-sample</artifactId>
@@ -37,6 +38,22 @@
                 <version>Greenwich.SR1</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server</artifactId>
+                <version>2.1.6</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui</artifactId>
+                <version>2.1.6</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>2.1.6</version>
             </dependency>
 
         </dependencies>

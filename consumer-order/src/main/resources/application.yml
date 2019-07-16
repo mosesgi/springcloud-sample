@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: ms-consumer-order
+  zipkin:
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      percentage: 1.0
 eureka:
   client:
     serviceUrl:
@@ -35,3 +40,7 @@ management:
     web:
       exposure:
         include: "*"
+
+logging:
+  level:
+    org.springframework.cloud.sleuth: DEBUG
