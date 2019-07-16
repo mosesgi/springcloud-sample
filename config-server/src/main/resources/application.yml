@@ -1,0 +1,36 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: ms-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/mosesgi/springcloud-test-configuration.git      # 配置Git仓库的地址
+          username:                                                         # Git仓库的账号
+          password:                                                         # Git仓库的密码
+          #uri: https://github.com/mosesgi/{application}/{profile}           # 支持占位符{application}、{profile}、{label}，这样就可轻松支持一个应用一个git仓库或者一个profile一个git仓库
+          #search-paths: foo,bar*  #Configserver会在 Git仓库根目录、 foo子目录，以及所有以 bar开始的子目录中查找配置文件。
+          #clone-on-start: true  #启动时就clone仓库到本地，默认是在配置被首次请求时，config server才会clone git仓库
+
+# Spring cloud bus, auto refresh config. Should work with rabbitMQ
+#      bus:
+#        trace:
+#          enabled: true     # 开启cloud bus的跟踪
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+
+#security:
+#  basic:
+#    enabled: true               # 开启基于HTTP basic的认证
+#  user:
+#    name: moses                  # 配置登录的账号是user
+#    password: 123456       # 配置登录的密码
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
