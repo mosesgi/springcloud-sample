@@ -56,12 +56,19 @@ public class OrderController {
                     @HystrixProperty(name = "queueSizeRejectionThreshold", value = "15"),
                     @HystrixProperty(name = "metrics.rollingStats.numBuckets", value = "10"),
                     @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
-            }
+            },
+            fallbackMethod = "errorContent"
     )
     @GetMapping("/user/{id}")
     public User findById(@PathVariable Long id) {
         LOGGER.info("=================请求用户中心接口==================");
         return restTemplate.getForObject("http://ms-provider-user/" + id, User.class);
+    }
+
+    public User errorContent(){
+        User u = new User();
+        u.setName("ErrorContent");
+        return u;
     }
 
     @GetMapping("/user-extend/{id}")

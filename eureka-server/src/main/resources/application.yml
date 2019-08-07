@@ -2,8 +2,8 @@ server:
   port: 8761                    # 指定该Eureka实例的端口
 eureka:
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: false   # 取消服务器自我注册
+    fetchRegistry: false        # 注册中心的服务器，没有必要再去其他地方检索服务
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
