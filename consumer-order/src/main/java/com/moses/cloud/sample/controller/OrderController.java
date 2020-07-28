@@ -19,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class OrderController {
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
+    private final String PROVIDER_USER = "http://ms-provider-user";
     //    @Autowired
 //    private UserFeignClient userFeignClient;
     @Autowired
@@ -48,7 +49,7 @@ public class OrderController {
             //https://github.com/Netflix/Hystrix/wiki/Configuration#ThreadPool
             threadPoolProperties = {
                     @HystrixProperty(name = "coreSize", value = "15"),
-                    // BlockingQueue的最大队列数，当设为-1，会使用SynchronousQueue，值为正时使用LinkedBlcokingQueue。
+                    // BlockingQueue的最大队列数，当设为-1，会使用SynchronousQueue，值为正时使用LinkedBlockingQueue。
                     @HystrixProperty(name = "maxQueueSize", value = "15"),
                     // 设置存活时间，单位分钟。如果coreSize小于maximumSize，那么该属性控制一个线程从实用完成到被释放的时间.
                     @HystrixProperty(name = "keepAliveTimeMinutes", value = "2"),
@@ -62,12 +63,12 @@ public class OrderController {
     @GetMapping("/user/{id}")
     public User findById(@PathVariable Long id) {
         LOGGER.info("=================请求用户中心接口==================");
-        return restTemplate.getForObject("http://ms-provider-user/" + id, User.class);
+        return restTemplate.getForObject(PROVIDER_USER + "/" + id, User.class);
     }
 
-    public User errorContent(){
+    public User errorContent(Long id){
         User u = new User();
-        u.setName("ErrorContent");
+        u.setName("ErrorContent: " + id);
         return u;
     }
 
@@ -78,7 +79,7 @@ public class OrderController {
 
     @GetMapping("/user/getIpAndPort")
     public String getIpAndPort() {
-        return this.restTemplate.getForObject("http://ms-provider-user/getIpAndPort", String.class);
+        return this.restTemplate.getForObject(PROVIDER_USER + "/getIpAndPort", String.class);
     }
 
     @GetMapping("/log-user-instance")

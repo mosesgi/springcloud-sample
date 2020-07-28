@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: ms-consumer-order
+  main:
+    allow-bean-definition-overriding: true
   zipkin:
     base-url: http://localhost:9411/
   sleuth:
